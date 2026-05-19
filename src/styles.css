@@ -1,0 +1,827 @@
+:root {
+  color-scheme: light;
+  --ink: #101014;
+  --ink-strong: #070708;
+  --paper: #f7f4ef;
+  --white: #ffffff;
+  --muted: #6c6b70;
+  --line: #ddd8cf;
+  --red: #c8102e;
+  --red-dark: #8f0b20;
+  --red-soft: #ffe6eb;
+  --steel: #d7e1e9;
+  --gold: #d6b25e;
+  --shadow: 0 22px 60px rgba(7, 7, 8, 0.2);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body,
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  padding: 0 28px;
+  color: var(--white);
+  background: rgba(7, 7, 8, 0.88);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 800;
+}
+
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--red);
+  border-radius: 8px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 0.95rem;
+}
+
+.brand-text {
+  font-size: 1rem;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.site-nav a {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.site-nav .nav-cta {
+  margin-left: 8px;
+  color: var(--white);
+  background: var(--red);
+}
+
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.nav-toggle-line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin: 3px auto;
+  background: currentColor;
+}
+
+.hero {
+  position: relative;
+  min-height: 78svh;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  color: var(--white);
+  background: var(--ink-strong);
+  isolation: isolate;
+}
+
+.hero-media,
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-media {
+  z-index: -3;
+  background:
+    linear-gradient(90deg, rgba(7, 7, 8, 1) 0%, rgba(7, 7, 8, 1) 58%, rgba(7, 7, 8, 0.58) 78%, rgba(7, 7, 8, 0.14) 100%),
+    url("/assets/sam-garnett.jpg") calc(100% + 150px) center / auto 120% no-repeat,
+    #172432;
+}
+
+.hero-overlay {
+  z-index: -2;
+  background:
+    linear-gradient(180deg, rgba(200, 16, 46, 0.22), rgba(7, 7, 8, 0) 46%),
+    linear-gradient(90deg, rgba(200, 16, 46, 0.14), rgba(7, 7, 8, 0) 58%);
+}
+
+.hero-content {
+  padding: 70px 0 58px;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--steel);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.eyebrow.dark {
+  color: var(--red);
+}
+
+.hero h1,
+.section h2 {
+  margin: 0;
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.hero h1 {
+  max-width: 760px;
+  font-size: 4.8rem;
+  font-weight: 900;
+}
+
+.hero-copy {
+  max-width: 650px;
+  margin: 24px 0 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1.2rem;
+}
+
+.hero-actions,
+.contact-actions,
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 0 18px;
+  font-weight: 850;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: var(--red);
+  color: var(--white);
+  box-shadow: 0 14px 36px rgba(200, 16, 46, 0.28);
+}
+
+.button-secondary {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.button-outline {
+  color: var(--ink);
+  border-color: var(--ink);
+  background: transparent;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 168px));
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.hero-stats div {
+  min-height: 92px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(10px);
+}
+
+.hero-stats dt {
+  color: var(--white);
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.hero-stats dd {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+
+.proof-strip {
+  padding: 18px 0;
+  color: var(--white);
+  background: var(--red);
+}
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1px;
+}
+
+.proof-grid span {
+  min-height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0.22);
+  text-align: center;
+  font-size: 0.88rem;
+  font-weight: 850;
+}
+
+.proof-grid span:first-child {
+  border-left: 0;
+}
+
+.section {
+  padding: 92px 0;
+}
+
+.section-light {
+  background: var(--paper);
+}
+
+.section-dark {
+  color: var(--white);
+  background:
+    linear-gradient(180deg, #15151a 0%, #09090b 100%);
+}
+
+.section-red {
+  color: var(--white);
+  background:
+    linear-gradient(120deg, rgba(7, 7, 8, 0.94), rgba(143, 11, 32, 0.94)),
+    var(--red-dark);
+}
+
+.section-contact {
+  background: var(--white);
+}
+
+.two-column,
+.credentials-layout,
+.contact-layout,
+.fit-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  gap: 64px;
+  align-items: start;
+}
+
+.intro h2,
+.section-heading h2,
+.credentials-layout h2,
+.fit-layout h2,
+.contact-layout h2 {
+  font-size: 3.1rem;
+  font-weight: 900;
+}
+
+.lede p,
+.section-heading p,
+.credentials-layout p,
+.contact-layout p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.lede p + p {
+  margin-top: 18px;
+}
+
+.section-dark .section-heading p,
+.section-red .credentials-layout p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.section-heading {
+  max-width: 760px;
+  margin-bottom: 34px;
+}
+
+.section-heading.narrow {
+  max-width: 720px;
+}
+
+.section-heading h2 + p {
+  margin-top: 18px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.subject-card,
+.step-card,
+.timeline article,
+.faq-grid details,
+.contact-form {
+  border-radius: 8px;
+}
+
+.subject-card {
+  min-height: 376px;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.065);
+}
+
+.card-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  color: var(--white);
+  background: var(--red);
+  font-weight: 900;
+}
+
+.subject-card h3,
+.step-card h3,
+.timeline h3 {
+  margin: 20px 0 10px;
+  font-size: 1.28rem;
+  line-height: 1.2;
+}
+
+.subject-card p,
+.step-card p,
+.timeline p,
+.faq-grid p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.subject-card ul {
+  display: grid;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.subject-card li {
+  position: relative;
+  padding-left: 18px;
+  color: rgba(255, 255, 255, 0.86);
+  font-weight: 720;
+}
+
+.subject-card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.step-card {
+  min-height: 236px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  box-shadow: 0 16px 40px rgba(16, 16, 20, 0.07);
+}
+
+.step-card span {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  color: var(--red);
+  background: var(--red-soft);
+  font-weight: 900;
+}
+
+.step-card p,
+.faq-grid details p {
+  color: var(--muted);
+}
+
+.timeline {
+  display: grid;
+  gap: 12px;
+}
+
+.timeline article {
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.timeline span {
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.timeline h3 {
+  margin-top: 8px;
+}
+
+.link-row a {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  color: var(--white);
+  font-weight: 850;
+}
+
+.fit-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.fit-list span {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 14px;
+  background: var(--white);
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.faq-grid details {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.faq-grid summary {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.faq-grid details p {
+  padding: 0 20px 20px;
+}
+
+.contact-layout {
+  align-items: center;
+}
+
+.contact-form {
+  display: grid;
+  gap: 16px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.contact-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--ink);
+  font-weight: 850;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid #cfc8bd;
+  border-radius: 8px;
+  padding: 12px 13px;
+  background: var(--white);
+  color: var(--ink);
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.button:focus-visible,
+.site-nav a:focus-visible,
+.nav-toggle:focus-visible {
+  outline: 3px solid rgba(200, 16, 46, 0.32);
+  outline-offset: 3px;
+}
+
+.form-button {
+  width: 100%;
+}
+
+.form-status {
+  min-height: 24px;
+  margin: 0;
+  color: var(--red-dark);
+  font-weight: 750;
+}
+
+.site-footer {
+  padding: 26px 0;
+  color: rgba(255, 255, 255, 0.78);
+  background: var(--ink-strong);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-inner p {
+  margin: 0;
+}
+
+.footer-inner a {
+  font-weight: 850;
+}
+
+@media (max-width: 1020px) {
+  .hero h1 {
+    font-size: 3.8rem;
+  }
+
+  .hero-media {
+    background:
+      linear-gradient(90deg, rgba(7, 7, 8, 1) 0%, rgba(7, 7, 8, 1) 58%, rgba(7, 7, 8, 0.48) 100%),
+      url("/assets/sam-garnett.jpg") calc(100% + 105px) center / auto 112% no-repeat,
+      #172432;
+  }
+
+  .card-grid,
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .two-column,
+  .credentials-layout,
+  .contact-layout,
+  .fit-layout {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .proof-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    min-height: 64px;
+    padding: 0 16px;
+  }
+
+  .brand-text {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: grid;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: calc(100% + 1px);
+    right: 12px;
+    left: 12px;
+    display: none;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    background: #0b0b0d;
+    box-shadow: var(--shadow);
+  }
+
+  .site-nav.is-open {
+    display: grid;
+  }
+
+  .site-nav a,
+  .site-nav .nav-cta {
+    margin: 0;
+    justify-content: center;
+  }
+
+  .container {
+    width: min(100% - 28px, 1120px);
+  }
+
+  .hero {
+    min-height: 78svh;
+  }
+
+  .hero-content {
+    padding: 44px 0 36px;
+  }
+
+  .hero-media {
+    background:
+      linear-gradient(180deg, rgba(7, 7, 8, 0.96) 0%, rgba(7, 7, 8, 0.9) 48%, rgba(7, 7, 8, 0.8) 100%),
+      url("/assets/sam-garnett.jpg") right top / auto 72% no-repeat,
+      #172432;
+  }
+
+  .hero h1 {
+    max-width: 520px;
+    font-size: 3rem;
+  }
+
+  .hero-copy {
+    max-width: 520px;
+    font-size: 1rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stats div {
+    min-height: 72px;
+  }
+
+  .proof-grid,
+  .card-grid,
+  .steps,
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .proof-grid span {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  .proof-grid span:first-child {
+    border-top: 0;
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+
+  .intro h2,
+  .section-heading h2,
+  .credentials-layout h2,
+  .fit-layout h2,
+  .contact-layout h2 {
+    font-size: 2.35rem;
+  }
+
+  .subject-card,
+  .step-card {
+    min-height: auto;
+  }
+
+  .contact-form {
+    padding: 18px;
+  }
+
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero h1 {
+    font-size: 2.55rem;
+  }
+
+  .hero-actions,
+  .contact-actions {
+    display: grid;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
