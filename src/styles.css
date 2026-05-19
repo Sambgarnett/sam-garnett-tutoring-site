@@ -516,6 +516,10 @@ li {
   color: var(--muted);
 }
 
+.section-dark .faq-grid details p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .timeline {
   display: grid;
   gap: 12px;
